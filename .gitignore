@@ -22,6 +22,3 @@ yarn-error.log*
 
 /lib
 /styleguide
-
-# Do not include compiled css
-*.css

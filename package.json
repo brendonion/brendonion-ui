@@ -1,18 +1,19 @@
 {
   "name": "brendonion-ui",
-  "version": "0.1.6",
+  "version": "0.1.9",
   "private": false,
   "author": "Brendan Walker <brendan@freshworks.io>",
   "main": "build/lib/components/index.js",
   "types": "build/lib/components/index.d.ts",
   "scripts": {
-    "build-lib": "tsc && npm run build-sass-to-css && npm run copy-css-to-lib",
+    "build-lib": "npm-run-all tsc copy-sass-to-lib copy-css-to-lib",
     "tsc": "tsc",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "copy-css-to-lib": "cpx \"./src/components/**/*.css\" ./build/lib/components",
-    "build-sass-to-css": "node-sass-chokidar src/ -o src/",
-    "watch-sass-to-css": "node-sass-chokidar src/ -o src/ --watch --recursive",
+    "copy-css-to-lib": "cpx \"./src/styles/css/*.css\" ./build/lib/styles/css/",
+    "copy-sass-to-lib": "cpx \"./src/styles/scss/*.scss\" ./build/lib/styles/scss/",
+    "build-sass-to-css": "node-sass-chokidar src/styles/css/index.scss -o src/styles/css/ --output-style compressed",
+    "watch-sass-to-css": "node-sass-chokidar src/styles/css/index.scss -o src/styles/css/ --watch --output-style compressed",
     "storybook": "start-storybook -p 9001"
   },
   "dependencies": {
